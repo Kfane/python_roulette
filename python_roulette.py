@@ -81,13 +81,13 @@ def main():
             num_of_users = int(num_of_users)
             if num_of_users > 5:
                 print()
-                print("Too many users, must have less than 5.")
+                print("\t\t!> Too many users, must have less than 5.")
                 print("..")
                 print("...")
                 continue
             elif num_of_users < 2:
                 print()
-                print("Not enough users, must have at least 2.")
+                print("\t\t!> Not enough users, must have at least 2.")
                 print("..")
                 print("...")
                 continue
@@ -96,7 +96,7 @@ def main():
                 break
         except ValueError:
             print()
-            print("Must be of int value.")
+            print("\t\t!> Must be of int value.")
             print("..")
             print("...")
 
@@ -107,13 +107,13 @@ def main():
             num_of_bullets = int(num_of_bullets)
             if num_of_users <= num_of_bullets:
                 print()
-                print("\t\tToo many bullets, must have less than the number of users.")
+                print("\t\t!> Too many bullets, must have less than the number of users.")
                 print("..")
                 print("...")
                 continue
             elif num_of_bullets < 1:
                 print()
-                print("\t\tNot enough bullets, must have at least 1.")
+                print("\t\t!> Not enough bullets, must have at least 1.")
                 print("..")
                 print("...")
                 continue
@@ -122,7 +122,7 @@ def main():
                 break
         except ValueError:
             print()
-            print("\t\tMust be of int value.")
+            print("\t\t!> Must be of int value.")
 
     # Fill the gun with the ammount of ammo randomly.
     gun.fill_gun()
@@ -142,11 +142,8 @@ def main():
     count = 0
     while ammo_in_gun > 0 and count != 40:
         bullet_list = gun.get_bullet_list()
-        print(bullet_list)
-        print("---------")
-        print(ammo_in_gun)
         user_list = users.get_user_list()
-        print("\t\t>Spinning the gun to see who goes...")
+        print("\t\t> Spinning the gun to see who goes...")
         sleep(4)
         print("...")
         sleep(2)
@@ -154,7 +151,7 @@ def main():
         user_in_turn = user_list[randint(0, len(user_list)-1)]
 
         print()
-        print(f"\t\t>User: {user_in_turn} turn..")
+        print(f"\t\t> User: {user_in_turn}'s' turn...")
         sleep(2)
 
         result = gun.shoot(bullet_list)
@@ -162,7 +159,7 @@ def main():
             print("\t\t ***BANGG*** ")
             print()
             sleep(3)
-            print(f"User {user_in_turn} has been eliminated.")
+            print(f"\t\t> User {user_in_turn} has been eliminated.")
             print()
             users.remove_user(user_in_turn)
             gun.expell_one_bullet()
@@ -170,17 +167,16 @@ def main():
             print("\t\t ***CLICK*** ")
             print()
             sleep(3)
-            print(f"\t\tUser {user_in_turn} has been spared.")
+            print(f"\t\t> User {user_in_turn} has been spared.")
             print()
             print()
 
-        print(f"\t\t>Next turn loading")
+        print(f"\t\t> Next turn loading")
         sleep(1)
         print("..")
         sleep(2)
         print("...")
         ammo_in_gun = gun.get_ammo()
-        print(ammo_in_gun)
         count+=1
 
     print()
